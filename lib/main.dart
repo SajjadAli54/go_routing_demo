@@ -10,10 +10,7 @@ import 'package:go_routing_demo/app/navigation.dart';
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 
 final shellRoute = ShellRoute(
-    builder: (context, state, child) => Navigation(
-          state: state,
-          child: child,
-        ),
+    builder: (context, state, child) => BottomNavigation(child: child),
     routes: [
       GoRoute(
         path: "/",
