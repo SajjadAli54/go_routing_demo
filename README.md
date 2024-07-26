@@ -4,6 +4,12 @@ A new Flutter project.
 
 ## Getting Started
 
+To test the deep links
+
+```
+adb shell am start -W -a android.intent.action.VIEW -d "http://example.com/users/123" com.example.go_routing_demo
+```
+
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:

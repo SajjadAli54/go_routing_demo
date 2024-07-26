@@ -27,7 +27,7 @@ class Navigation extends StatelessWidget {
                 size: 30,
               )),
           ElevatedButton(
-              onPressed: () => GoRouter.of(context).go("/users/seardhParams"),
+              onPressed: () => GoRouter.of(context).go("/users/searchParams"),
               child: const Icon(
                 Icons.details,
                 size: 30,
