@@ -4,27 +4,40 @@ import 'package:go_routing_demo/app/details.dart';
 
 import 'package:go_routing_demo/app/home.dart';
 import 'package:go_routing_demo/app/login.dart';
+import 'package:go_routing_demo/app/navigation.dart';
 
-final _router = GoRouter(routes: [
-  GoRoute(
-    path: "/",
-    builder: (context, state) => const HomePage(),
-  ),
-  GoRoute(
-    path: "/login",
-    builder: (context, state) => const LoginPage(),
-  ),
-  GoRoute(
-    path: "/users/:userId",
-    builder: (context, state) =>
-        DetailsPage(id: state.pathParameters["userId"]),
-  ),
-  GoRoute(
-    path: "/users",
-    builder: (context, state) =>
-        DetailsPage(id: state.uri.queryParameters["userId"]),
-  )
-]);
+final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
+
+final shellRoute = ShellRoute(
+    builder: (context, state, child) => Navigation(
+          state: state,
+          child: child,
+        ),
+    routes: [
+      GoRoute(
+        path: "/",
+        builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: "/login",
+        builder: (context, state) => const LoginPage(),
+      ),
+      GoRoute(
+        path: "/users/:userId",
+        builder: (context, state) =>
+            DetailsPage(id: state.pathParameters["userId"]),
+      ),
+      GoRoute(
+        path: "/users",
+        builder: (context, state) =>
+            DetailsPage(id: state.uri.queryParameters["userId"]),
+      )
+    ]);
+
+final _router = GoRouter(
+    navigatorKey: _rootNavigatorKey,
+    initialLocation: '/',
+    routes: [shellRoute]);
 
 void main() {
   runApp(const MyApp());
