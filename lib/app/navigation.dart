@@ -4,12 +4,18 @@ import 'package:go_router/go_router.dart';
 class BottomNavigation extends StatelessWidget {
   final Widget child;
 
-  const BottomNavigation({super.key, required this.child});
+  BottomNavigation({super.key, required this.child});
+
+  var handleClick = (route, context) => GoRouter.of(context).go(route);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: child,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
+      ),
       bottomNavigationBar: BottomAppBar(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         height: 60,
@@ -18,17 +24,22 @@ class BottomNavigation extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            _buildBottomNavItem(
-              context,
-              icon: Icons.home,
-              label: 'Home',
-              route: '/',
+            IconButton(
+              icon: const Icon(
+                Icons.home,
+                color: Colors.black,
+              ),
+              onPressed: () => handleClick("/", context),
             ),
-            _buildBottomNavItem(
-              context,
-              icon: Icons.person,
-              label: 'Profile',
-              route: '/login',
+            IconButton(
+              icon: Icon(Icons.person),
+              color: Colors.black,
+              onPressed: () => handleClick("/login", context),
+            ),
+            IconButton(
+              icon: Icon(Icons.search),
+              color: Colors.black,
+              onPressed: () => handleClick("/users/searchParams", context),
             ),
             _buildBottomNavItem(
               context,
