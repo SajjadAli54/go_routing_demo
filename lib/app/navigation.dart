@@ -15,16 +15,31 @@ class Navigation extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           ElevatedButton(
+              onPressed: () => GoRouter.of(context).go("/"),
+              child: const Icon(
+                Icons.home,
+                size: 30,
+              )),
+          ElevatedButton(
               onPressed: () => GoRouter.of(context).go("/login"),
-              child: const Text("Login")),
+              child: const Icon(
+                Icons.person,
+                size: 30,
+              )),
           ElevatedButton(
               onPressed: () => GoRouter.of(context).go("/users/seardhParams"),
-              child: const Text("Det P")),
+              child: const Icon(
+                Icons.details,
+                size: 30,
+              )),
           ElevatedButton(
               onPressed: () => GoRouter.of(context).go(Uri(
                   path: "/users",
                   queryParameters: {"userId": "Query Params"}).toString()),
-              child: const Text("Det QP"))
+              child: const Icon(
+                Icons.details_rounded,
+                size: 30,
+              ))
         ],
       ),
     );
