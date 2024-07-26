@@ -11,6 +11,10 @@ class BottomNavigation extends StatelessWidget {
     return Scaffold(
       body: child,
       bottomNavigationBar: BottomAppBar(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        height: 60,
+        color: Colors.cyan.shade400,
+        notchMargin: 5,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -71,7 +75,7 @@ class BottomNavigation extends StatelessWidget {
               size: 28,
               color: Colors.white,
             ),
-            SizedBox(height: 3),
+            SizedBox(height: 2),
             Text(
               label,
               style: TextStyle(
