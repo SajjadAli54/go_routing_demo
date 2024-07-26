@@ -15,8 +15,13 @@ class HomePage extends StatelessWidget {
                 onPressed: () => context.go("/login"),
                 child: const Text("Login")),
             ElevatedButton(
-                onPressed: () => context.go("/users/123"),
-                child: const Text("Details"))
+                onPressed: () => context.go("/users/seardhParams"),
+                child: const Text("Details with Params")),
+            ElevatedButton(
+                onPressed: () => context.go(Uri(
+                    path: "/users",
+                    queryParameters: {"userId": "Query Params"}).toString()),
+                child: const Text("Details with Query Params"))
           ],
         ),
       ),

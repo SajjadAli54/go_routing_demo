@@ -18,6 +18,11 @@ final _router = GoRouter(routes: [
     path: "/users/:userId",
     builder: (context, state) =>
         DetailsPage(id: state.pathParameters["userId"]),
+  ),
+  GoRoute(
+    path: "/users",
+    builder: (context, state) =>
+        DetailsPage(id: state.uri.queryParameters["userId"]),
   )
 ]);
 
